@@ -129,6 +129,7 @@ return [
         App\Zizaco\Entrust\EntrustServiceProvider::class,
         Laravel\Cashier\CashierServiceProvider::class,
         \Maatwebsite\Excel\ExcelServiceProvider::class,
+        Laravel\Dusk\DuskServiceProvider::class,
         /*
          * Application Service Providers...
          */
