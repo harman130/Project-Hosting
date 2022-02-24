@@ -128,6 +128,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         App\Zizaco\Entrust\EntrustServiceProvider::class,
         Laravel\Cashier\CashierServiceProvider::class,
+        \Maatwebsite\Excel\ExcelServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -191,6 +192,7 @@ return [
         'role' => App\Zizaco\Entrust\Middleware\EntrustRole::class,
         'permission' => App\Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability' => App\Zizaco\Entrust\Middleware\EntrustAbility::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

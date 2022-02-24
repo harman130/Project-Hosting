@@ -57,6 +57,7 @@
                             @endif
 
                         </div>
+                       @include('leads.import')
                         <div class="form-inline">
                             <div class="form-group col-sm-7" style="padding-left: 0px;">
                                 <label for="deadline" class="control-label thin-weight">@lang('Deadline')</label>
@@ -66,6 +67,13 @@
                                 <label for="contact_time" class="control-label thin-weight">@lang("O'clock")</label>
                                 <input type="text" id="contact_time" name="contact_time" value="{{\Carbon\Carbon::today()->setTime(15, 00)->format(carbonTime())}}" class="form-control">
                             </div>
+                        </div>
+                        <div class="form-inline">
+                            <div class="form-group col-sm-7" style="padding-left: 0px;">
+                                <label for="due_date" class="control-label thin-weight">@lang('Due Date')</label>
+                                <input type="text" id="due_date" name="due_date"  class="form-control">
+                            </div>
+                           
                         </div>
                         <div class="form-group">
                             <label for="deadline" class="control-label thin-weight">@lang('Status')</label>

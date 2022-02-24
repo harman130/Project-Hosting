@@ -15,6 +15,9 @@ use App\Models\Status;
 use App\Models\Invoice;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+
+ use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\LeadsImport;
 use App\Services\Invoice\InvoiceCalculator;
 use App\Http\Requests\Lead\StoreLeadRequest;
 use App\Http\Requests\Lead\UpdateLeadFollowUpRequest;
@@ -51,6 +54,8 @@ class LeadsController extends Controller
         $leads->map(function ($item) {
             return [$item['visible_deadline_date'] = $item['deadline']->format(carbonDate()), $item["visible_deadline_time"] = $item['deadline']->format(carbonTime())];
         });
+        
+        
         return $leads->toJson();
     }
 
@@ -91,6 +96,7 @@ class LeadsController extends Controller
                 'status_id' => $request->status_id,
                 'user_created_id' => auth()->id(),
                 'external_id' => Uuid::uuid4()->toString(),
+                'due_date' => $request->due_date,
                 'client_id' => $client->id
             ]
         );
@@ -232,4 +238,19 @@ class LeadsController extends Controller
     {
         return Lead::whereExternalId($external_id)->firstOrFail();
     }
+
+    public function fileImportexport()
+    {
+       return view('leads.import');
+    }
+    
+    public function fileImport(Request $request) 
+    {
+        
+        Excel::import(new LeadsImport, $request->file('file')->store('temp'));
+        return back();
+    }
+   
+
+
 }

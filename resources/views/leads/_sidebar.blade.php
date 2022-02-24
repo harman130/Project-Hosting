@@ -38,6 +38,14 @@
         {{ date(carbonDateWithText(), strtotime($lead->created_at))}}
     </div>
 </div>
+<div class="row margin-top-10">
+    <div class="col-md-3">{{ __('Due Date') }}</div>
+    <div class="col-md-9">
+        {{ date($lead->due_date)}}
+    </div>
+
+    
+</div>
 
 <div class="row margin-top-10">
     <div class="col-md-3">{{ __('Follow up') }}</div>

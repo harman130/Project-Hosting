@@ -13,5 +13,9 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         'notifications/markread',
+        'lead/import',
+        'leads/updateassign/{external_id}',
+        'leads/updatestatus/{external_id}',
+      
     ];
 }

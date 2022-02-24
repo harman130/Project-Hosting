@@ -27,6 +27,7 @@ class CreateLeadsTable extends Migration
             $table->foreign('user_created_id')->references('id')->on('users');
             $table->datetime('deadline');
             $table->softDeletes();
+            $table->date('due_date');
             $table->timestamps();
         });
     }

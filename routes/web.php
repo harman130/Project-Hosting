@@ -1,4 +1,7 @@
 <?php
+use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\LeadsImport;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,8 @@
 */
 Route::auth();
 Route::get('/logout', 'Auth\LoginController@logout');
+Route::post('lead/import', 'LeadsController@fileImport')->name('leads-import');
+
 Route::group(['middleware' => ['auth']], function () {
 
     /**
@@ -86,16 +91,30 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'leads'], function () {
         Route::get('/all-leads-data', 'LeadsController@allLeads')->name('leads.all');
         Route::get('/data', 'LeadsController@leadsJson')->name('leads.data');
+        
         Route::patch('/updateassign/{external_id}', 'LeadsController@updateAssign')->name('lead.update.assignee');
         Route::patch('/updatestatus/{external_id}', 'LeadsController@updateStatus')->name('lead.update.status');
         Route::patch('/updatefollowup/{external_id}', 'LeadsController@updateFollowup')->name('lead.followup');
+       
+        Route::get('/create/import', 'LeadsController@fileImportexport');
+        
+        
+   
         Route::post('/updateassign/{external_id}', 'LeadsController@updateAssign');
+        
         Route::post('/updatestatus/{external_id}', 'LeadsController@updateStatus');
         Route::get('/create/{client_external_id}', 'LeadsController@create')->name('client.lead.create');
         Route::delete('/{lead}/json', 'LeadsController@destroyJson');
     });
+    
+    Route::post('test', function(){ dd('works'); } );
+  
     Route::resource('leads', 'LeadsController');
     Route::post('/comments/{type}/{external_id}', 'CommentController@store')->name('comments.create');
+
+   
+    
+    
 
 
 

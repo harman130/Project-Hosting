@@ -40,8 +40,9 @@ class Lead extends Model implements Commentable
         'result',
         'deadline',
         'invoice_id',
+        'due_date',
     ];
-    protected $dates = ['deadline'];
+    protected $dates = ['deadline','due_date'];
 
     protected $hidden = ['remember_token'];
 
