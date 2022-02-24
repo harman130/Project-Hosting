@@ -107,8 +107,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('/{lead}/json', 'LeadsController@destroyJson');
     });
     
-    Route::post('test', function(){ dd('works'); } );
-  
+    
     Route::resource('leads', 'LeadsController');
     Route::post('/comments/{type}/{external_id}', 'CommentController@store')->name('comments.create');
 
