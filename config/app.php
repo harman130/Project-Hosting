@@ -127,6 +127,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
         App\Zizaco\Entrust\EntrustServiceProvider::class,
+        Laravel\Dusk\DuskServiceProvider::class,
         Laravel\Cashier\CashierServiceProvider::class,
         \Maatwebsite\Excel\ExcelServiceProvider::class,
 
